@@ -5,7 +5,7 @@ const UserCard = props => {
   return (
     <div>
       HELLO THERE! {userCard.login}
-      <img src={userCard.url} alt=""></img>
+      <br></br> <img src={userCard.avatar_url} alt=""></img>
       {console.log(userCard)}
     </div>
   );
