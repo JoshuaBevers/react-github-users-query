@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 
+import UserCardList from "./components/UserCardList";
+
 class App extends Component {
   state = {
     textInput: "",
@@ -13,13 +15,17 @@ class App extends Component {
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
     const previousInput = this.state.textInput;
+    const response = await fetch(
+      `https://api.github.com/users/${previousInput}`
+    );
+    const Data = await response.json();
 
     this.setState({
       textInput: "",
-      users: [...this.state.users, previousInput]
+      users: [...this.state.users, Data]
     });
   };
 
@@ -38,7 +44,7 @@ class App extends Component {
           </label>
           <button type="submit">Submit</button>
         </form>
-        <p>{this.state.textInput}</p>
+        <UserCardList usersData={this.state.users} />
       </div>
     );
   }
