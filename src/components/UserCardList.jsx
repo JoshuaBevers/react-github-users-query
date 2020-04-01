@@ -1,4 +1,5 @@
 import React from "react";
+import UserCard from "./UserCard";
 
 const UserCardList = props => {
   const { usersData } = props;
@@ -8,7 +9,9 @@ const UserCardList = props => {
         usersData.map(user => {
           return (
             <ul key={user}>
-              <li>{/* <UserProfile userProfile={user} /> */}</li>
+              <li>
+                <UserCard userCard={user} />
+              </li>
             </ul>
           );
         })
